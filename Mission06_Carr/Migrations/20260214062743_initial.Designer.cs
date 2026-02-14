@@ -10,7 +10,7 @@ using Mission06_Carr.Models;
 
 namespace Mission06_Carr.Migrations
 {
-    [DbContext(typeof(JoelHiltonAppContext))]
+    [DbContext(typeof(MovieCollectionContext))]
     [Migration("20260214062743_initial")]
     partial class initial
     {

@@ -6,12 +6,13 @@ namespace Mission06_Carr.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
-
-    public HomeController(ILogger<HomeController> logger)
+    private MovieCollectionContext _context;
+    public HomeController(MovieCollectionContext movieCollectionContext, ILogger<HomeController> logger)
     {
+        _context = movieCollectionContext;
         _logger = logger;
     }
+    private readonly ILogger<HomeController> _logger;
 
     public IActionResult Index()
     {
@@ -32,6 +33,9 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult MoviesList(Movie movie)
     {
+        _context.Movies.Add(movie);
+        _context.SaveChanges();
+        
         return View("Confirmation", movie);
     }
 }

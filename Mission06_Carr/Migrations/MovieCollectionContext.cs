@@ -9,7 +9,7 @@ using Mission06_Carr.Models;
 
 namespace Mission06_Carr.Migrations
 {
-    [DbContext(typeof(JoelHiltonAppContext))]
+    [DbContext(typeof(MovieCollectionContext))]
     partial class JoelHiltonAppContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
