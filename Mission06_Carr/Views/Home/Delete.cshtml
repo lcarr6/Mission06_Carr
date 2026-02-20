@@ -1,0 +1,39 @@
+@model Movie
+
+@{
+    ViewData["Title"] = "Delete Movie";
+}
+
+<h2 class="mb-4">Delete Movie</h2>
+
+<div class="card border-danger" style="max-width: 500px;">
+    <div class="card-header bg-danger text-white">
+        <h5 class="card-title mb-0">Are you sure you want to delete this movie?</h5>
+    </div>
+    <div class="card-body">
+        <dl class="row mb-0">
+            <dt class="col-sm-4">Title</dt>
+            <dd class="col-sm-8">@Model.Title</dd>
+
+            <dt class="col-sm-4">Year</dt>
+            <dd class="col-sm-8">@Model.Year</dd>
+
+            <dt class="col-sm-4">Category</dt>
+            <dd class="col-sm-8">@(Model.Category?.CategoryName ?? "N/A")</dd>
+
+            <dt class="col-sm-4">Director</dt>
+            <dd class="col-sm-8">@(Model.Director ?? "N/A")</dd>
+
+            <dt class="col-sm-4">Rating</dt>
+            <dd class="col-sm-8">@(Model.Rating ?? "N/A")</dd>
+        </dl>
+    </div>
+    <div class="card-footer">
+        <!-- Form to confirm deletion -->
+        <form asp-action="DeleteConfirmed" asp-controller="Home" method="post">
+            <input type="hidden" name="movieId" value="@Model.MovieId" />
+            <button type="submit" class="btn btn-danger">Yes, Delete</button>
+            <a asp-action="ViewCollection" class="btn btn-secondary ms-2">Cancel</a>
+        </form>
+    </div>
+</div>
